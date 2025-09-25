@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content=""width=defice-width, initial-scale="1.0">
+        <title>Sign Up</title>
+        <style>
+            h1 {color: green;}
+            .error{color:red;}
+        </style>
+    </head>
+    <body>
+        <nav>
+            <ul>
+            <li><a href="/login">Login</a></li>
+            <li><a href="/register">Create account</a></li>
+            </ul>
+        </nav>
+        <h1>Create an account</h1>
+        {% if error %}
+        <p class="error">{{error}}</p>
+        {% endif %}
+        <form action="/register" method="post">
+            <label for="email">email</label>
+            <input type="text" name="email" required/>
+            <label for="password">Password:</label>
+            <input type="password" name="password" required/>
+            <label for="base_currency">Base Currency</label>
+            <select name="base_currency" id="base_currency">
+                <option value="RON">RON</option>
+                <option value="EUR">EUR</option>
+                <option value="USD">USD</option>
+                <option value="CHF">CHF</option>
+                <option value="GBP">GBP</option>
+                <option value="BGN">BGN</option>
+                <option value="RUB">RUB</option>
+                <option value="ZAR">ZAR</option>
+                <option value="BRL">BRL</option>
+                <option value="CNY">CNY</option>
+                <option value="INR">INR</option>
+                <option value="100KRW">100KRW</option>
+                <option value="MXN">MXN</option>
+                <option value="NZD">NZD</option>
+                <option value="RSD">RSD</option>
+                <option value="UAH">UAH</option>
+                <option value="XDR">XDR</option>
+                <option value="TRY">TRY</option>
+                <option value="XAU">XAU</option>
+                <option value="AUD">AUD</option>
+                <option value="CAD">CAD</option>
+                <option value="CZK">CZK</option>
+                <option value="DKK">DKK</option>
+                <option value="EGP">EGP</option>
+                <option value="100HUF">100HUF</option>
+                <option value="100JPY">100JPY</option>
+                <option value="MDL">MDL</option>
+                <option value="NOK">NOK</option>
+                <option value="PLN">PLN</option>
+                <option value="SEK">SEK</option>
+                <option value="AED">AED</option>
+                <option value="THB">THB</option>
+                <option value="HKD">HKD</option>
+                <option value="100IDR">100IDR</option>
+                <option value="ILS">ILS</option>
+                <option value="100ISK">100ISK</option>
+                <option value="MYR">MYR</option>
+                <option value="PHP">PHP</option>
+                <option value="SGD">SGD</option>
+            </select>
+
+            <button type="submit">Sign Up</button>
+        </form>
+    </body>
+</html>
