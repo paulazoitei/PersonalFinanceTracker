@@ -8,7 +8,7 @@ class User(UserMixin,db.Model):
     email=db.Column(db.String(50),nullable=False,unique=True)
     password_hash=db.Column(db.String(1000),nullable=False)
     base_currency=db.Column(db.String(3),nullable=False)
-    created_at=db.Column(db.DateTime(timezone=True),server_default=db.func.now())
+    created_at=db.Column(db.DateTime,default=datetime.now)
     
     def get_id(self):
         return str(self.user_id)    

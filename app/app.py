@@ -42,6 +42,7 @@ class AppFactory:
         self.app.config.from_object(Config)
         self.app.config["SECRET_KEY"]=os.getenv("SECRET_KEY") or "sdajhoiwhyroqyhrohkjhsfkjah"
         
+        
         self.app.config['SESSION_TYPE']='filesystem'
         
 
