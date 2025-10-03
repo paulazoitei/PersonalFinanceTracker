@@ -11,11 +11,15 @@ def register():
     if request.method=="POST":
         email=request.form.get("email")
         password=request.form.get("password")
+        confirm_password=request.form.get("confirm_password")
         base_currency=request.form.get("base_currency")
 
         if User.query.filter_by(email=email).first():
-            return render_template("sign_up.html",erorr="Email already taken!")
-            
+            return render_template("sign_up.html",error="Email already taken!")
+        
+        if password!=confirm_password:
+            return render_template("sign_up.html",error="The passwords don't match!")
+        
         hashed_password=generate_password_hash(password,method="pbkdf2:sha256")
 
         new_user=User(email=email,password_hash=hashed_password,base_currency=base_currency)
@@ -42,7 +46,7 @@ def login():
     return render_template("login.html")
     
 logout_bp=Blueprint('logout_bp',__name__)
-@logout_bp.route('/logout',methods=['POST','GET'])
+@logout_bp.route('/logout',methods=['POST'])
 @login_required
 def logout():
     logout_user()

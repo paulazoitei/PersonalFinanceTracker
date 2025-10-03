@@ -14,7 +14,7 @@ from flask_login import LoginManager
 from routes.home import home_bp
 import os
 from dotenv import load_dotenv
-
+from flask_wtf.csrf import CSRFProtect
 
 class AppFactory:
 
@@ -25,22 +25,28 @@ class AppFactory:
         self.configure_extensions()
         self.configure_login()
         self.register_routes()
+        self.configure_csrf()
         
     
         
     def configure_login(self):
         self.login_manager=LoginManager()
-        self.login_manager.login_view = "login"
+        self.login_manager.login_view = "login_bp.login"
         self.login_manager.init_app(self.app)
         
         @self.login_manager.user_loader
         def load_user(user_id):
             return User.query.get(int(user_id))
+    def configure_csrf(self):
+        self.csrf=CSRFProtect()
+        self.csrf.init_app(self.app)
             
 
     def configure_app(self):
         self.app.config.from_object(Config)
-        self.app.config["SECRET_KEY"]=os.getenv("SECRET_KEY") or "sdajhoiwhyroqyhrohkjhsfkjah"
+        load_dotenv()
+        self.app.config["SECRET_KEY"]=os.getenv("SECRET_KEY")
+        
         
         
         self.app.config['SESSION_TYPE']='filesystem'
