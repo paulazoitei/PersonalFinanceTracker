@@ -5,7 +5,6 @@ from repositories.database import db
 import psycopg2
 from flask_migrate import Migrate
 from models.user import User
-from models.enum import TypeEnum
 from models.transaction import Transaction
 from models.category import Category
 from services.authentication import register_bp, login_bp, logout_bp,dashboard_bp
