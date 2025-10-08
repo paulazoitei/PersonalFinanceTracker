@@ -12,16 +12,12 @@
         <nav>
             <ul>
                 
-                <li>
-                    <form id="logout" method="post" action="{{url_for('logout_bp.logout')}}">
-                        <input type="hidden" name="csrf_token" value="{{csrf_token() }}">
-                        <button type="submit">Logout</button>
-                    </form>
-                </li>
-
-                
             </ul>
         </nav>
+        <form id="logout" method="post" action="{{url_for('logout_bp.logout')}}">
+                        <input type="hidden" name="csrf_token" value="{{csrf_token() }}">
+                        <button type="submit">Logout</button>
+        </form>
         <h1>You are logged in as {{email}}!</h1>
     </body>
 </html>
